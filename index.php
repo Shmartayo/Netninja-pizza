@@ -22,7 +22,7 @@
     //close commectiom to the datavase
     mysqli_close($conn); 
      
-
+    print_r($pizzas);
 
 
 
