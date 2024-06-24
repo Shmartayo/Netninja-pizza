@@ -2,6 +2,29 @@
     //connect database
     include "config/db_connect.php";
 
+    // how to delete a record
+    // step 1 : check to see if there is a value im the
+    // suvmit actiom im the POST method
+
+    if(isset($_POST['delete'])){
+        // if there is a value them we must get the id 
+        // value passed im the hiddem form 
+
+        $id_to_delete = mysqli_real_escape_string($conn, $_POST['id_to_delete']);
+
+        //use the id to delete the record
+        $sql = "DELETE FROM pizzas WHERE id = $id_to_delete";
+        
+        // Check to see if the query was executed
+        if(mysqli_query($conn,$sql)){
+            //success
+            header('Location: index.php');
+        }  else {
+            //error
+            echo 'Query error: ' .mysqli_error($conn);
+        }
+    }
+
 // Check GET request id param (check if we have this parameter)
 // isset() is how we check if the variable is set.
     if (isset($_GET['id'])){
@@ -47,15 +70,16 @@
                 <p>Created at : <?php echo date($pizza['created_at']); ?></p>
                 <h5>Ingredients:</h5>
                 <p><?php echo htmlspecialchars($pizza['ingredients']);?></p>
+                
+                <!-- Delete Form -->
+                <form action="details.php" method="post">
+                    <input type="hidden" name="id_to_delete" value="<?php echo htmlspecialchars($pizza['id'])?>">
+                    <input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
+                </form>
             <?php else: ?>
                 <h5>No such pizza exists!</h5>
-
             <?php endif; ?>
-
             </div>
         </div>
-
     <?php include "templates/footer.php"?>
-    
-
 </html>
