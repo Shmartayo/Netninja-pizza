@@ -1,8 +1,12 @@
 <?php 
-    //Imitializatiom of the form variavles
+    //connect to the database
+    include "config/db_connect.php";
+
+    //Initialization of the form variables
     $email = $title = $ingredients = "";
     $errors = array("email"=> "","title"=> "","ingredients"=> "");
 
+    //On submit check it there are errors
     if(isset($_POST["submit"])){
 
         //check email
@@ -38,9 +42,28 @@
         /*check if the errors array doesn't consist of any 
           errors and redirect if there are no errors
           do nothing if there are no errors */ 
-        if(!array_filter($errors)){
-            header("Location: index.php");
-        }        
+        if(array_filter($errors)){
+
+
+        }  else {
+            $email = mysqli_real_escape_string($conn, $_POST['email']);
+            $title = mysqli_real_escape_string($conn, $_POST['title']);
+            $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
+
+            //create sql
+            $sql ="INSERT INTO pizzas (email,title,ingredients) VALUES('$email','$title','$ingredients')";
+
+
+            //save to dv amd check
+            if(mysqli_query($conn,$sql)){
+                //success
+                //Redirect to the imdex page
+                header("Location: index.php");
+            } else {
+                //error
+                echo "Query error: " . mysqli_error($conn);
+            }
+        }      
     }
 
 ?>

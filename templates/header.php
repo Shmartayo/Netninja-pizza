@@ -5,10 +5,10 @@
     <title>Ninja Pizza</title>
     <style type="text/css">
         .brand{
-            background: #cbb09c;
+            background: #cbb09c !important;
         }
         .brand-text{
-            color: #cbb09c;
+            color: #cbb09c !important;
         }
         form{
             max-width: 460px;
