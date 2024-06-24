@@ -43,16 +43,15 @@
           errors and redirect if there are no errors
           do nothing if there are no errors */ 
         if(array_filter($errors)){
-
-
+            //echo errors in forms
         }  else {
+            //override the values and make insertion of values into the database secure
             $email = mysqli_real_escape_string($conn, $_POST['email']);
             $title = mysqli_real_escape_string($conn, $_POST['title']);
             $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
 
-            //create sql
+            //create sql query variable
             $sql ="INSERT INTO pizzas (email,title,ingredients) VALUES('$email','$title','$ingredients')";
-
 
             //save to db and check
             if(mysqli_query($conn,$sql)){
