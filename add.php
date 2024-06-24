@@ -54,10 +54,10 @@
             $sql ="INSERT INTO pizzas (email,title,ingredients) VALUES('$email','$title','$ingredients')";
 
 
-            //save to dv amd check
+            //save to db and check
             if(mysqli_query($conn,$sql)){
                 //success
-                //Redirect to the imdex page
+                //Redirect to the index page
                 header("Location: index.php");
             } else {
                 //error
