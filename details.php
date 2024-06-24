@@ -63,7 +63,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <?php include "templates/header.php"?>
-        <div class="container center">
+        <div class="container center grey-text">
             <?php if ($pizza): ?>
                 <h4><?php echo htmlspecialchars($pizza['title']); ?></h4>
                 <p>Created By: <?php echo htmlspecialchars($pizza['email']); ?></p>
