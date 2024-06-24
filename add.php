@@ -4,6 +4,7 @@
 
     //Initialization of the form variables
     $email = $title = $ingredients = "";
+
     $errors = array("email"=> "","title"=> "","ingredients"=> "");
 
     //On submit check it there are errors
@@ -11,7 +12,7 @@
 
         //check email
         if (empty($_POST["email"])){
-             $errors["email"] = "An email is required";
+                $errors["email"] = "An email is required";
         } else{
             $email = htmlspecialchars($_POST["email"]);
             if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
