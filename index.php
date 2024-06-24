@@ -21,9 +21,6 @@
 
     //close commectiom to the datavase
     mysqli_close($conn); 
-
-    // explode(',', $pizzas[0]["ingredients"]);
-
 ?>
 
 <!DOCTYPE html>
@@ -33,16 +30,16 @@
     <h4 class="center grey-text"> Pizzas!</h4>
     <div class="container">
         <div class="row">
-            <?php foreach($pizzas as $pizza){?>
+            <?php foreach($pizzas as $pizza):?>
 
                 <div class="col s6 md3">
                     <div class="card z-depth-0">
                         <div class="card-content center">
                             <h6><?php echo htmlspecialchars($pizza["title"]);?></h6>
                             <ul>
-                                <?php foreach(explode(',', $pizza['ingredients']) as $ingredients){?>
+                                <?php foreach(explode(',', $pizza['ingredients']) as $ingredients):?>
                                     <li><?php echo htmlspecialchars($ingredients); ?></li>
-                                <?php }?>
+                                <?php endforeach;?>
                             </ul>
                         </div>
                         <div class="card-action right-align">
@@ -51,7 +48,7 @@
                     </div>
                 </div>
 
-            <?php }?>
+            <?php endforeach;?>
         </div>
     </div>
     <?php include "templates/footer.php"; ?>
