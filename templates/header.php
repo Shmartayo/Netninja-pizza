@@ -8,6 +8,9 @@
     }
 
     $name = $_SESSION['name'] ?? 'Guest';
+
+    //get cookie
+    $gender = $_COOKIE['gender'] ?? 'unknown';
 ?>
 
 <head>
@@ -43,6 +46,7 @@
             <a href="index.php" class="brand-logo brand-text">Ninja Pizza</a>
             <ul id="nav-mobile" class="right hide-on-small-and-down">
                 <li class="grey-text">Hello <?php echo htmlspecialchars($name); ?></li>
+                <li class="grey-text">(<?php echo htmlspecialchars($gender); ?>)</li>
                 <li><a href="add.php" class="btn brand z-depth-0">Add a Pizza</a></li>
             </ul>
         </div>
